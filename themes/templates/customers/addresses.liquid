@@ -1,0 +1,431 @@
+{% comment %}
+
+  © 2018 Atlas Group, Inc. All rights reserved.
+
+  No portion of this software code may be reproduced, distributed or modified
+  without prior express written authorization of Atlas Group, Inc.
+
+  Unauthorized reproduction or copying of this software code, via any medium,
+  is strictly prohibited and may subject you to severe legal liability.
+
+{% endcomment %}
+
+<div class="account addresses">
+
+  {% paginate customer.addresses by 48 %}
+
+    <div class="py-5 my-5">
+
+      <div class="container px-3">
+
+        <div class="header">
+
+          <div class="row">
+
+            <div class="col">
+
+              <div class="title">
+
+                <div class="text-left">
+
+                  <h1 class="py-2 mb-5">
+
+                    Addresses
+
+                  </h1>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-12">
+
+              <div class="link">
+
+                <div class="text-right">
+
+                  <a class="btn btn-link px-4 py-2 my-2" href="/account">
+
+                    Back to Account
+
+                  </a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-12">
+
+              <div class="button">
+
+                <div class="text-center">
+
+                  <a class="btn btn-block btn-primary px-4 py-2 my-2" data-toggle="modal" href="#add">
+
+                    Add New Address
+
+                  </a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          {% for address in customer.addresses %}
+
+            <div class="col-lg-3">
+
+              <div class="title">
+
+                <div class="text-left">
+
+                  <p>
+
+                    {% if address == customer.default_address %}
+
+                      Default Address
+
+                    {% else %}
+
+                      Address {{ forloop.index }}
+
+                    {% endif %}
+
+                  </p>
+
+                </div>
+
+              </div>
+
+              <hr class="my-3">
+
+              <div class="address">
+
+                <div class="text-left">
+
+                  {{ address | format_address }}
+
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-auto">
+
+                  <u>
+
+                    <a data-toggle="modal" href="#{{ address.id }}">
+
+                      Edit
+
+                    </a>
+
+                  </u>
+
+                </div>
+
+                <!-- <div class="col-auto">
+
+                  <u>
+
+                    <a href="#">
+
+                      Remove
+
+                    </a>
+
+                  </u>
+
+                </div> -->
+
+              </div>
+
+            </div>
+
+            <div class="modal fade" id="{{ address.id }}">
+
+              <div class="modal-dialog modal-dialog-centered">
+
+                <div class="modal-content">
+
+                  <div class="modal-body">
+                    
+                    <a class="navbar-toggler edit-address border-0 p-3" data-easing="none" data-duration="none" data-distance="none" data-target=".modal" data-toggle="modal">
+
+                      <svg class="d-block" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" width="20" height="20">
+
+                        <polyline points="0,6.5 20,6.5"></polyline>
+
+                        <polyline points="0,13.5 20,13.5"></polyline>
+
+                      </svg>
+
+                    </a>
+
+                    {% form 'customer_address' , address %}
+
+                      <div class="form-group">
+
+                        <input class="form-control border-primary py-2" type="text" name="address[first_name]" value="{{ form.first_name }}" placeholder="First Name">
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <input class="form-control border-primary py-2" type="text" name="address[last_name]" value="{{ form.last_name }}" placeholder="Last Name">
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <input class="form-control border-primary py-2" type="text" name="address[company]" value="{{ form.company }}" placeholder="Company">
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <input class="form-control border-primary py-2" type="text" name="address[address1]" value="{{ form.address1 }}" placeholder="Address 1">
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <input class="form-control border-primary py-2" type="text" name="address[address2]" value="{{ form.address2 }}" placeholder="Address 2">
+
+                      </div>
+
+                      <div class="row">
+
+                        <div class="col">
+
+                          <div class="form-group">
+
+                            <input class="form-control border-primary py-2" type="text" name="address[city]" value="{{ form.city }}" placeholder="City">
+
+                          </div>
+
+                        </div>
+
+                        <div class="col">
+
+                          <div class="form-group">
+
+                            <input class="form-control border-primary py-2" type="text" name="address[province]" value="{{ form.province }}" placeholder="State / Province">
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <select class="custom-select border-primary" name="address[country]">
+
+                          {{ country_option_tags }}
+
+                        </select>
+
+                      </div>
+
+                      <div class="row">
+
+                        <div class="col">
+
+                          <div class="form-group">
+
+                            <input class="form-control border-primary py-2" type="text" name="address[zip]" value="{{ form.zip }}" placeholder="ZIP">
+
+                          </div>
+
+                        </div>
+
+                        <div class="col">
+
+                          <div class="form-group">
+
+                            <input class="form-control border-primary py-2" type="tel" name="address[phone]" value="{{ form.phone }}" placeholder="Phone">
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <div class="form-group">
+
+                        <label class="form-check-label">
+
+                          {{ form.set_as_default_checkbox }}
+
+                          Set as Default Address
+
+                        </label>
+
+                      </div>
+
+                      <button class="btn btn-block btn-primary py-2" type="submit">
+
+                        Save
+
+                      </button>
+
+                    {% endform %}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  {% endpaginate %}
+
+</div>
+
+<div class="modal fade" id="add">
+
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content">
+
+      <div class="modal-body">
+
+        {% form 'customer_address', customer.new_address %}
+
+          <div class="form-group">
+
+            <input class="form-control border-primary py-2" type="text" name="address[first_name]" value="{{ form.first_name }}" placeholder="First Name">
+
+          </div>
+
+          <div class="form-group">
+
+            <input class="form-control border-primary py-2" type="text" name="address[last_name]" value="{{ form.last_name }}" placeholder="Last Name">
+
+          </div>
+
+          <div class="form-group">
+
+            <input class="form-control border-primary py-2" type="text" name="address[company]" value="{{ form.company }}" placeholder="Company">
+
+          </div>
+
+          <div class="form-group">
+
+            <input class="form-control border-primary py-2" type="text" name="address[address1]" value="{{ form.address1 }}" placeholder="Address 1">
+
+          </div>
+
+          <div class="form-group">
+
+            <input class="form-control border-primary py-2" type="text" name="address[address2]" value="{{ form.address2 }}" placeholder="Address 2">
+
+          </div>
+
+          <div class="row">
+
+            <div class="col">
+
+              <div class="form-group">
+
+                <input class="form-control border-primary py-2" type="text" name="address[city]" value="{{ form.city }}" placeholder="City">
+
+              </div>
+
+            </div>
+
+            <div class="col">
+
+              <div class="form-group">
+
+                <input class="form-control border-primary py-2" type="text" name="address[province]" value="{{ form.province }}" placeholder="State / Province">
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="form-group">
+
+            <select class="custom-select border-primary py-2" name="address[country]">
+
+              {{ country_option_tags }}
+
+            </select>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col">
+
+              <div class="form-group">
+
+                <input class="form-control border-primary py-2" type="text" name="address[zip]" value="{{ form.zip }}" placeholder="ZIP">
+
+              </div>
+
+            </div>
+
+            <div class="col">
+
+              <div class="form-group">
+
+                <input class="form-control border-primary py-2" type="tel" name="address[phone]" value="{{ form.phone }}" placeholder="Phone">
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="form-group">
+
+            <label class="form-check-label">
+
+              {{ form.set_as_default_checkbox }}
+
+              Set as Default Address
+
+            </label>
+
+          </div>
+
+          <button class="btn btn-block btn-primary py-2" type="submit">
+
+            Add
+
+          </button>
+
+        {% endform %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
