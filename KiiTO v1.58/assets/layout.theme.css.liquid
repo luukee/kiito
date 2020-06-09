@@ -456,6 +456,11 @@ template {
 .h5, h5 {
     font-size: 1.25rem
 }
+@media (max-width:991.98px) {
+    .h5, h5 {
+        font-size: 1rem;
+    }
+}
 
 .h6, h6 {
     font-size: .55rem
@@ -3842,7 +3847,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
         flex-direction: column;
         flex: 0 0 100%;
         min-height: 59.4px;
-        padding: 1rem 0;
+        padding: 5px 0;
     }
     .announcement-bar p {
         font-size: 20px;
@@ -3871,7 +3876,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 @media only screen and (max-width: 749px) {
     .announcement-bar__message {
-        padding:10px calc(10px + 12px);
+        padding: 10px;
         align-items: center;
         font-size: 12px;
         display: flex;
@@ -5332,6 +5337,8 @@ button.close {
 
 .product-lightbox img {
     padding: 1rem;
+    max-height: 100vh;
+    background-color: #fff;
 }
 
 .tooltip {
@@ -11882,7 +11889,7 @@ a.rating-btn {
     border: 1px solid #464646;
 }
 /* review star icons */
-.fa-star, .fa-star-o, .fa-star-half-o, .stamped-fa-star, .stamped-fa-star-o, .stamped-fa-star-half-o {
+.fa-star, .fa-star-o, .fa-star-half-o, .stamped-fa-star, .stamped-fa-star-o, .stamped-fa-star-half-o, i.stamped-fa.stamped-fa-star-o {
 color: #57c9e4 !important; /* change color */
 }
 .review #stamped-reviews-widget {
@@ -12279,7 +12286,7 @@ p.mini-cart__empty-message {
 	#rc_container .form-inline {
 		max-width: 353px;
 		margin: 0 auto;
-		align-items: center;
+		align-items: end;
 	}
 
 	.rc_block label.rc_label {
@@ -12287,7 +12294,7 @@ p.mini-cart__empty-message {
 	}
 label.rc_label,
 .form-group label.rc_label__deliver_every {
-    padding: 0 0 0 0;
+    padding: 5px 0 0 0;
 }
       #rc_container.form-inline {
     display: -ms-flexbox !important;
@@ -12315,16 +12322,10 @@ div.rc_block__type--active {
 	}
 
       .form-group.quantity {
+            display: flex;
     justify-content: flex-end;
-        flex: 0 0 30%;
 }
-.form-group.selectors {
-        flex: 0 1 70%;
 
-}
-.rc_block__type__onetime {
-    text-align: left;
-}
     .price-cut {
     text-decoration: line-through;
     margin-bottom: 0;
@@ -12460,23 +12461,30 @@ label.rc_label {
   font-size: 1em;
 }
 
-.custom-select {
+     .custom-select {
     background: black;
     border: 0;
 	text-transform: none;
 	text-decoration: underline;
-    height: auto;
-    width: 120px;
-    -webkit-appearance:none;
+       height: auto;
+       width: 120px;
+       -webkit-appearance:none;
+       /*     -webkit-appearance: none;
+    -moz-appearance: none; */
+
+/*     appearance: none */
 }
 
+      @media (min-width: 576px) {
+        .custom-select {
+           margin-left: -5px;
+        }
+      }
 .rc_block.rc_block__type.custom-radio {
     padding: 0 8px;
     text-align: left;
-    display: flex;
-    align-items: center;
 }
-.subscription-note h6 {
+      .subscription-note h6 {
     padding-left: 0.6em;
 }
 
@@ -12513,7 +12521,7 @@ select.variant-selector:not(.onetimeonly) {
     font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 19px;
     text-transform: none;
-    margin-bottom: .5rem;
+    margin-bottom: .75rem;
 }
 
 select.variant-selector.onetimeonly,
@@ -12547,6 +12555,10 @@ form[action^="/cart"] [type="submit"] {
 .cart__submit.cart__submit-control {
     background-color: var(--secondary);
 }
+.cart__submit-controls input {
+    min-width: 155px;
+}
+
 
       .cart__submit.cart__submit-control:hover {
     background-color: var(--secondaryHover);
@@ -12576,6 +12588,24 @@ div#shopify-section-cart-template a {
     text-decoration: none;
     text-transform: none;
 }
+/* what is kiito page */
+.what-is-kiito .embed-responsive {
+    overflow: visible;
+}
+.what-is-kiito .image-with-text,
+.what-is-kiito .text-with-image {
+    margin-bottom: 8rem;
+}
+@media (max-width: 1000px) {
+    .what-is-kiito .image-with-text .embed-responsive .embed-responsive-item,
+    .what-is-kiito .text-with-image .embed-responsive .embed-responsive-item {
+        position: relative;
+    }
+    .embed-responsive-4by3:before {
+        padding-top: 0 !important;
+    }
+}
+
 /* .cart__shipping rte, */
 .cart__submit-controls .btn.btn--secondary.cart__continue.small--hide.cart__submit-control {
     font-size: 100%;
@@ -12650,13 +12680,20 @@ div#shopify-section-cart-template a {
 
 /* login */
 
-.login .btn-dark {
+.login .btn-dark,
+.reset .btn-dark {
     transition: all .2s linear;
 }
-.login .btn-dark:hover  {
+.login .btn-dark:hover,
+.reset .btn-dark:hover  {
     background-color: #59c8e2;
     color: var(--dark);
 }
+.login .btn-dark::selection,
+.reset .btn-dark::selection {
+    background-color: #bbeff6 !important;
+}
+
 .login #rc_login {
     padding-top: 2rem;
     margin-top: 2rem;
@@ -12745,8 +12782,240 @@ form[action^="/cart/add"] [type=submit] {
     visibility: visible !important;
 }
 
-/*get rid of the preview bar 
+/*get rid of the preview bar
 iframe#preview-bar-iframe {
     display: none;
 }
-*/
+ */
+
+
+
+/* product tabs */
+/* product tabs */
+/* product tabs */
+/* product tabs */
+/* product tabs container */
+.product-form-tabs {
+    position: relative;
+}
+
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div:first-child {
+	position: absolute;
+	top: 10px;
+}
+.product-form-tabs [data-pf-type="TabsContent"] {
+	padding: 0 15px !important;
+}
+
+.product-form-tabs .pf-p-variant:last-child .pf-p-variant-radio {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.product-form-tabs .pf-p-variant:last-child .pf-p-variant-radio > div {
+    margin-bottom: 0;
+}
+/* END size radio buttons */
+
+/* original radio buttons */
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div input,
+.product-form-tabs .pf-p-variant:not(:first-child) .pf-p-variant-radio > div input {
+    left: -999vw;
+}
+/* buttons: subscription */
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio {
+    display: flex;
+    flex-wrap: nowrap;
+}
+/* all buttons */
+.product-form-tabs .pf-p-variant .pf-p-variant-radio > div {
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+/* all button labels */
+.product-form-tabs .pf-p-variant:not(:first-child) .pf-p-variant-radio > div label {
+    text-align: center;
+    border: 1px solid #fff;
+}
+/* one time button & subscribe tab */
+.product-form-tabs button span::before,
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div:first-of-type input[checked] label::before {
+	content: '';
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #fff;
+	border-radius: 100%;
+}
+
+/* subscribe tab */
+.subscribe-tab span::before,
+.one-time-tab span::before {
+	left: 0;
+	top: 0;
+}
+
+.product-form-tabs .pf-anchor.one-time-tab:not([data-pf-tab-active="true"]) {
+    color: transparent;
+}
+
+.product-form-tabs [data-pf-type="TabsContent"]:last-child:not([style="display: block;"]) {
+    display: block !important;
+}
+.product-form-tabs [data-pf-type="TabsContent"]:last-child:not([style="display: block;"]) .sub-variants .pf-p-variant:first-child {
+    display: none;
+}
+/* hide radio buttons */
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div:not(:first-child) input,
+.product-form-tabs .pf-p-variant:last-of-type .pf-p-variant-radio > div input {
+    display: none;
+}
+.pf-p-variant-radio [value="One Time"] + label {
+    padding-left: 15px !important;
+    line-height: 1;
+}
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div:first-of-type input[checked="checked"] + label::after,
+button[data-pf-tab-active="true"] span::after {
+	content: '';
+	width: 12px;
+	height: 12px;
+	background: #46aed9;
+	position: absolute;
+	left: 3px;
+	top: 3px;
+	border-radius: 100%;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+/* subscription buttons */
+/* far right button */
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div:last-of-type {
+    margin-right: 0 !important;
+}
+
+/* size buttons */
+.product-form-tabs .pf-p-variant:not(:first-child) .pf-p-variant-radio > div,
+.quantity-btn-row > div {
+    flex: 0 0 48%;
+    flex-wrap: nowrap;
+    margin-right: 2% !important;
+}
+/* size buttons */
+.product-form-tabs .pf-p-variant:not(:first-child) .pf-p-variant-radio > div:last-child,
+.quantity-btn-row > div:last-child {
+    margin-right: 0 !important;
+}
+
+.quantity-btn-row .product-quantity {
+    width: 100%;
+}
+
+.product-form-tabs .pf-anchor {
+    position: relative;
+    padding: 0 30px !important;
+    margin: 10px 15px !important;
+}
+
+.product-form-tabs .pf-p-variant-radio {
+	display: flex;
+	flex-direction: row;
+}
+/* radio btn's container */
+.product-form-tabs .pf-p-variant:not(:first-child) .pf-p-variant-radio > div,
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div:not(:first-of-type) {
+	background: transparent;
+	position: relative;
+	padding: 0;
+	-webkit-font-smoothing: antialiased!important;
+	margin: 0;
+	touch-action: manipulation;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+	position: relative;
+	text-align: center;
+	-webkit-box-align: center;
+	height: 35px;
+}
+.pf-p-variant:first-of-type .pf-p-variant-radio > div:not(:first-of-type) label {
+    border: 1px solid #fff;
+}
+.product-form-tabs .sub-variants .pf-p-variant:first-of-type .pf-p-variant-radio > div:not(:last-child) {
+    margin-right: 10px !important;
+}
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div:not(:first-of-type) {
+	flex: 1 0 auto;
+}
+.product-form-tabs .pf-p-variant:not(:first-child) .pf-p-variant-radio input + label,
+.product-form-tabs .pf-p-variant:first-of-type .pf-p-variant-radio > div:not(:first-of-type) label {
+    background: transparent;
+    padding: 10px 10px;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: center;
+}
+
+.product-form-tabs .pf-p-variant:not(:first-child) .pf-p-variant-radio {
+    justify-content: center;
+    width: 100%;
+}
+
+[data-pf-type="TabsMenu"] button:first-child,
+.__pf .pf-9cb48b46[data-pf-tab-active="true"] {
+    background: transparent !important;
+}
+
+.product-form-tabs .pf-p-variant:not(:first-child) {
+    width: 100%;
+}
+.product-form-tabs .pf-p-variant:not(:first-child) .pf-p-variant-radio > div {
+    display: flex !important;
+    bottom: 0;
+    flex: 0 0 49%;
+    top: 12px;
+}
+
+.sub-variants {
+    flex-direction: column;
+}
+
+.sub-variants .pf-p-variant:not(:last-child) {
+    margin-right: 0 !important;
+}
+
+.product-form-tabs [data-pf-type="TabsMenu"] {
+    flex-direction: column;
+}
+/* one time button only */
+[data-pf-type="TabsContent"]:first-child + div[style="display: block;"] .pf-p-variant:first-of-type .pf-p-variant-radio > div:first-child input {
+    font-size: 12px;
+    margin: 2px 0 0 3px;
+}
+.product-form-tabs [data-pf-type="TabsContent"]:last-child .pf-p-variant:first-of-type .pf-p-variant-radio > div:first-child {
+    padding-left: 0;
+}
+/* radio buttons little white dot */
+button[data-pf-tab-active="true"]::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+/* selected radio button */
+.pf-p-variant:first-of-type .pf-p-variant-radio > div:not(:first-child) input[type=radio]:checked + label,
+.pf-p-variant:last-of-type .pf-p-variant-radio > div input[type=radio]:checked + label {
+  background: #46aed9 !important;
+  color: #000 !important;
+  border: 1px solid #46aed9 !important;
+} 

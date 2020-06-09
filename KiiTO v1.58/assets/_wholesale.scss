@@ -1,0 +1,63 @@
+.wholesale-fancybox {
+	width: 35vw;
+	min-width: 400px;
+	max-width: 500px;
+	p {
+		text-align: center;
+	}
+}
+
+h1.text-uppercase.display-1.pb-1.mb-3 {
+    color: yellow;
+}
+// <link href="//cdn.shopify.com/s/files/1/0063/2333/9362/t/12/assets/styles.css?1747" rel="stylesheet" type="text/css" media="all">
+// <link href="//cdn.shopify.com/s/files/1/0063/2333/9362/t/12/assets/styles.css?1749" rel="stylesheet" type="text/css" media="all">
+.wholesale-contact-form {
+	list-style: none;
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 0;
+
+	form {
+		margin: 0 auto;
+	}
+
+	li.type-text,
+	li.type-textarea {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 15px;
+		align-items: baseline;
+
+	}
+
+	label {
+		margin-right: 15px;
+	}
+
+	input,
+	textarea {
+		font-family: Roboto, sans-serif;
+		font-size: 20px;
+		text-transform: none;
+	}
+
+	li.type-submit {
+		align-self: center;
+    }
+
+    #name,
+    #email,
+    #inputStreet,
+    #inputCity {
+		width: 100%;
+	}
+
+	#inputState {
+		width: 50%;
+	}
+
+	#inputZip {
+		width: 50%;
+	}
+}
