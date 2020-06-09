@@ -1,0 +1,164 @@
+{% comment %}
+
+© 2018 Atlas Group, Inc. All rights reserved.
+
+No portion of this software code may be reproduced, distributed or modified
+without prior express written authorization of Atlas Group, Inc.
+
+Unauthorized reproduction or copying of this software code, via any medium,
+is strictly prohibited and may subject you to severe legal liability.
+
+{% endcomment %}
+
+<div class="login">
+
+  <div class="py-5 my-5">
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+
+        <div class="col-lg-4">
+
+          <div class="carousel carousel-fade slide" id="carousel">
+
+            <div class="carousel-inner">
+
+              <div class="carousel-item active">
+
+                <div class="title">
+
+                  <div class="text-center">
+
+                    <h1 class="mb-3">
+
+                      Sign In
+
+                    </h1>
+
+                  </div>
+
+                </div>
+
+                  {% if form.posted_successfully? %}
+                  <span class="hide reset-password-success">GREAT!</span>
+                  {% endif %}
+
+                {% form 'customer_login' %}
+
+                {{ form.errors | default_errors }}
+
+                <div class="form-group">
+
+                  <!-- new --> <label for="CustomerEmail" class="label--hidden">{{ 'customer.login.email' | t }}</label>
+
+                  <input type="email" name="customer[email]" id="CustomerEmail"
+                    class="form-control border-dark py-2 {% if form.errors contains 'email' %} input--error{% endif %}"
+                    placeholder="{{ 'customer.login.email' | t }}" autocorrect="off" autocapitalize="off" autofocus>
+
+                </div>
+
+                {% if form.password_needed %}
+
+                <div class="form-group">
+
+                  <label for="CustomerPassword" class="label--hidden">{{ 'customer.login.password' | t }}</label>
+                  <input type="password" value="" name="customer[password]" id="CustomerPassword"
+                    class="form-control border-dark py-2{% if form.errors contains 'password' %} input--error{% endif %}"
+                    placeholder="{{ 'customer.login.password' | t }}">
+
+
+                </div>
+
+                {% endif %}
+
+              
+              <p class="customer-login__links">
+                <!-- CREATE ACCOUNT -->
+                <input type="submit" class="btn btn-dark btn-block py-2"
+                  value="{{ 'customer.login.sign_in' | t }}">
+                <a href="/account/register"
+                  class="btn btn-link btn-block py-2">{{ 'layout.customer.create_account' | t }}</a>
+                <!-- end CREATE ACCOUNT -->
+
+                <!-- forgot password -->
+                {% if form.password_needed %}
+                <a href="#carousel" id="RecoverPassword"
+                class="btn btn-link btn-block py-2" data-slide-to="1" href="#carousel"
+                  class="btn btn-link btn-block py-2">{{ 'customer.login.forgot_password' | t }}</a>
+                {% endif %}
+                <!-- END forgot password -->
+              </p>
+
+                {% endform %}
+              
+                <!-- Begin ReCharge code -->
+              {% include 'subscription-account-login' %}
+              <!-- End ReCharge code -->
+
+              </div>
+
+              <div class="carousel-item">
+
+                <div class="title">
+
+                  <div class="text-center">
+
+                    <h1 class="mb-3">
+
+                      Recover Password
+
+                    </h1>
+
+                  </div>
+
+                </div>
+
+                {% form 'recover_customer_password' %}
+                
+                {{ form.errors | default_errors }}
+                
+                <label for="customer_email">Email Address</label>
+                <input type="email" name="email" />
+                
+                <input type="submit" value="Submit" />
+                
+                {% endform %}
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {% if shop.checkout.guest_login %}
+
+          <div class="guest">
+
+            <div class="mb-5">
+
+              {% form 'guest_login' %}
+
+              <button class="btn btn-primary" type="submit">
+
+                Continue
+
+              </button>
+
+              {% endform %}
+
+            </div>
+
+          </div>
+
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
