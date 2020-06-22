@@ -11,23 +11,6 @@
 
         </div>
 
-        <!-- product title -->
-        {% if product.title != blank %}
-        <div class="title" data-transition="entrance" style="transform : translateY( 50px )">
-
-            <div class="text-center">
-
-                <h1 class="text-uppercase mb-1">
-
-                    {{ product.title }}
-
-                </h1>
-
-            </div>
-
-        </div>
-        {% endif %}
-
     </div>
 
     {% if product.description != blank %}
@@ -146,6 +129,35 @@
         <form class="mb-3" action="/cart/add" data-productid="{{product.id}}" method="post"
             enctype="multipart/form-data">
 
+        <!-- product title -->
+        {% if product.title != blank %}
+        
+        <div class="row product-title" data-transition="entrance" style="transform : translateY( 50px )">
+        
+            <div class="col">
+
+            <h1 class="text-uppercase mb-1">
+            
+                {{ product.title }}
+            
+            </h1>
+
+            </div>
+
+            <div class="col">
+
+                <h1 id="ProductPrice" class="text-uppercase mb-1" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+
+                    {{ current_variant.price | money }}
+                
+                </h1>
+
+            </div>
+
+        </div>
+        
+        {% endif %}
+
             <div class="form-group">
 
                 <!-- ReCharge Select -->
@@ -162,24 +174,6 @@
                     }
 
                 </style>
-
-                <select name="id" data-productid="{{ product.id }}" class="variant-selector {% if block.settings.one_time_only != blank %}onetimeonly{% endif %} {% if block.settings.productid contains "wholesale" %}wholesale{% endif %}">
-
-                    {% for variant in product.variants %}
-
-                    {% if variant.available == true %}
-
-                    <option value="{{variant.id}}">{{ variant.price | money_with_currency }} per case ({{ variant.title }})</option>
-
-                    {% else %}
-
-                    <option disabled="disabled"> {{ variant.title }} - sold out!</option>
-
-                    {% endif %}
-
-                    {% endfor %}
-
-                </select>
 
                 <!-- ReCharge subscription product -->
                 {% if product.available %}
@@ -310,3 +304,5 @@
 </div> <!-- end footer -->
 
 </div>
+
+

@@ -256,6 +256,35 @@
 		<!-- new code -->
 
 	</div>
+
+<div data-product-id="{{ product.id }}" data-display="radio" data-label="true" data-pf-type="ProductVariant"
+	class="sc-pQfSI gluJHn pf-faff31cf" style="--pf-s-lg:16px; --pf-s-md:16px; --pf-s-sm:8px; --pf-s-xs:8px;">
+	<input data-productid="{{ product.id }}" name="id" class="pf-input-variant-{{ product.id }}" type="hidden"
+		value="{{ product.variants.first.id }}"></div>
+<div data-product-id="{{ product.id }}" data-display="dropdown" data-label="true" data-pf-type="ProductVariant"
+	class="sc-pQfSI gluJHn pf-d161c083" style="--pf-s-lg:16px; --pf-s-md:16px; --pf-s-sm:8px; --pf-s-xs:8px;">
+	<input data-productid="{{ product.id }}" name="id" class="pf-input-variant-{{ product.id }}" type="hidden"
+		value="{{ product.variants.first.id }}"></div>
+
+	<select name="id" data-productid="{{ product.id }}"
+		class="variant-selector {% if block.settings.one_time_only != blank %}onetimeonly{% endif %} {% if block.settings.productid contains "wholesale" %}wholesale{% endif %}">
+	
+		{% for variant in product.variants %}
+	
+			{% if variant.available == true %}
+	
+				<option value="{{variant.id}}">{{ variant.price | money_with_currency }} per case ({{ variant.title }})</option>
+	
+			{% else %}
+	
+				<option disabled="disabled"> {{ variant.title }} - sold out!</option>
+	
+		{% endif %}
+	
+		{% endfor %}
+	
+	</select>
+
 	<!-- Subscriptions Powered by ReCharge Payments: JS -->
     <script src="//rechargeassets-bootstrapheroes-rechargeapps.netdna-ssl.com/static/js/rcWidget.js"></script>
 	<script>

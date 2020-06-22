@@ -56,7 +56,7 @@
 
     <meta name="viewport" content="width=device-width , initial-scale=1 , maximum-scale=1 , shrink-to-fit=no , user-scalable=no">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ckcachebust=586898796">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ckcachebust=586898796">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css?ckcachebust=586898796" />
 
@@ -192,7 +192,16 @@
     
 
     <meta name="google-site-verification" content="xxl6am69ItGROPQl6gJXqcI5x02-ZZr1WVbr6s8wMxA" />
+
+    <!-- jquery UI -->
+
+    {{- 'jquery-ui.min.css' | asset_url | stylesheet_tag -}}
+    
+    <!-- END jquery UI -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js?ckcachebust=586898796"></script>
+  
+    {{ 'jquery-ui.min.js'  | asset_url | script_tag }}
 
     {% include 'minmaxify-head' %}
     
@@ -222,8 +231,28 @@
   
   }
 </script>
-    
-</head>
+        <!-- tiktok pixel -->
+    <script>
+      (function () {
+        var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
+        ta.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=BRCL8D8UB1JFH3P9SD8G';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ta, s);
+      })();
+    </script>
+    <!-- END tiktok pixel -->
+ 
+{% render 'pagefly-header' %}
+
+  <script>
+    $(function () {
+      $("[multiple]").selectable({
+
+      });
+    });
+  </script>
+
+ </head> 
 
 <body class="bg-dark">
 
@@ -268,7 +297,7 @@
               <strong>{{ 'cart.general.subtotal' | t }}</strong> <span class="amount">{{ cart.total_price | money }}</span>
             </p>
             <p class="mini-cart__buttons buttons">
-              <a href="/checkout" class="button checkout wc-forward">{{ 'cart.general.checkout' | t }}</a>
+              <a href="/cart" class="button checkout wc-forward">{{ 'cart.general.checkout' | t }}</a>
               <a href="/collections/shop" class="btn btn--secondary cart__continue small--hide cart__submit-control" >
                 {{ 'cart.general.continue_shopping' | t }}
               </a>

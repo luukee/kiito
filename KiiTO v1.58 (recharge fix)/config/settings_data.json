@@ -20,7 +20,7 @@
       "navigation": {
         "type": "navigation",
         "settings": {
-          "show_announcement": true,
+          "show_announcement": false,
           "home_page_only": false,
           "announcement_text": "<p>Use <b>STAYPLANTED<\/b> for 15% off 12 &amp; 30 packs<\/p><sub>10% of proceeds donated to Keck Medicine of USC COVID-19 Emergency Fund<\/sub>",
           "announcement_link": "shopify:\/\/collections\/shop",
@@ -257,7 +257,7 @@
           "1566521870269": {
             "type": "product",
             "settings": {
-              "product": "chocolate-maca-4",
+              "product": "",
               "link": "",
               "one_time_only": false,
               "lightbox": "",
@@ -274,7 +274,7 @@
           "1566523020375": {
             "type": "product",
             "settings": {
-              "product": "matcha-moringa-wholesale",
+              "product": "",
               "link": "",
               "one_time_only": false,
               "lightbox": "",

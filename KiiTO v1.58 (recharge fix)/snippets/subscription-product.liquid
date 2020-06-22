@@ -147,12 +147,12 @@
 
 	</style>
 	<!-- Subscriptions Powered by ReCharge Payments: HTML -->
-	<div id="rc_container" {% if subscription_only %}class="rc_subscription-only col-12 col-md-12 col-lg-12 mb-0 mx-xl-auto"{% else %}class="col-12 col-md-12 col-lg-12 mb-0 mx-xl-auto"{% endif %} style="display: none;">
+	<div id="rc_container" {% if subscription_only %}class="rc_subscription-only col-12 col-md-12 col-lg-12 mb-0 mx-xl-auto px-0"{% else %}class="col-12 col-md-12 col-lg-12 mb-0 mx-xl-auto px-0"{% endif %} style="display: none;">
 		<div class="form-inline">
 			<div class="form-group quantity col-3 col-md-4 col-lg-3 col-xl-4 px-0">
 				<input min="1" type="number" id="quantity" name="quantity" value="1" class="quantity" />
 			</div>
-			<div class="form-group selectors col-8 col-md-8 col-lg-9 col-xl-8 px-2">
+			<div class="form-group selectors col-8 col-md-8 col-lg-9 col-xl-8">
 				<!-- <input type="hidden" name="" id="rc_subscription_id" value="1"> --> <!-- note: subscription_id property no longer required -->
 				<input type="hidden" name="" id="rc_shipping_interval_unit_type" value="{{ shipping_interval_unit_type }}">
 				<select id="rc_duplicate_selector" aria-hidden="true" class="styled replaced no-js" style="display: none;">
@@ -214,8 +214,13 @@
 										{% endif %}
 									</span>
 								{% endif %}
-								<select name="" id="rc_shipping_interval_frequency" class="rc_select rc_select__frequency styled replaced custom-select" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
+								{%- comment -%}
+								add this to selector below to show all options
+								multiple="multiple"
+								{%- endcomment -%}
+								<select name="" id="rc_shipping_interval_frequency" multiple size="4" class="rc_select rc_select__frequency styled replaced custom-select" {% if shipping_interval_frequency.size == 1 %}style="display: none;"{% endif %}>
 									{% for frequency in shipping_interval_frequency %}
+									{%- comment -%}class="ui-widget-content"{%- endcomment -%}
 										<option value="{{ frequency }}">
 											{{ frequency }}
 											{% if frequency == "1" and label_unit_type == 'Months' or label_unit_type == 'Weeks' %}
@@ -236,34 +241,42 @@
 					{% else %}
 					{% endif %}
 				</div>
-				<!-- <div class="rc_popup">
+				{%- comment -%}
+				<div class="rc_popup">
 					{% if show_widget %}
-						<div class="rc_popup__hover">
-							{% if show_widget_icon %}
-								<img src="{{ widget_icon }}" height="21" width="18" alt="ReCharge Subscription services icon" class="rc_popup__icon">
-							{% endif %}
-							{{ subscription_details_label }}
-							<div class="rc_popup__block">
-								<div class="rc_popup__block__content">
-									<div class="rc_popup__close" style="display: none;">x</div>
-									{{ how_it_works_text }}
-									{% if show_learnmore %}
-										<br><a href="{{ learnmore_url }}" target="_blank" aria-label="Learn more about ReCharge Payments">{{ learnmore_link }}</a>
-									{% endif %}
-								</div>
-								{% if show_poweredby %}
-									<div class="rc_popup__block__footer">
-										<a href="{{ poweredby_url }}" target="_blank" aria-label="ReCharge Payments homepage">
-											<img src="//rechargestatic-bootstrapheroes.netdna-ssl.com/static/images/widget/rc_widget__banner@2x.png" height="28" width="153" alt="ReCharge Subscriptions company banner" class="rc_popup__badge">
-										</a>
-									</div>
+					<div class="rc_popup__hover">
+						{% if show_widget_icon %}
+						<img src="{{ widget_icon }}" height="21" width="18" alt="ReCharge Subscription services icon"
+							class="rc_popup__icon">
+						{% endif %}
+						{{ subscription_details_label }}
+						<div class="rc_popup__block">
+							<div class="rc_popup__block__content">
+								<div class="rc_popup__close" style="display: none;">x</div>
+								{{ how_it_works_text }}
+								{% if show_learnmore %}
+								<br><a href="{{ learnmore_url }}" target="_blank"
+									aria-label="Learn more about ReCharge Payments">{{ learnmore_link }}</a>
 								{% endif %}
 							</div>
+							{% if show_poweredby %}
+							<div class="rc_popup__block__footer">
+								<a href="{{ poweredby_url }}" target="_blank" aria-label="ReCharge Payments homepage">
+									<img src="//rechargestatic-bootstrapheroes.netdna-ssl.com/static/images/widget/rc_widget__banner@2x.png"
+										height="28" width="153" alt="ReCharge Subscriptions company banner" class="rc_popup__badge">
+								</a>
+							</div>
+							{% endif %}
 						</div>
+					</div>
 					{% elsif show_widget == "link" %}
-						<a href="{{ learnmore_url }}" target="_blank" class="rc_popup__hover" aria-label="Learn more about ReCharge Payments">{% if show_widget_icon %}<img src="{{ widget_icon }}" height="21" width="18" alt="ReCharge Subscription services icon" class="rc_popup__icon"> {% endif %}{{ subscription_details_label }}</a>
+					<a href="{{ learnmore_url }}" target="_blank" class="rc_popup__hover"
+						aria-label="Learn more about ReCharge Payments">{% if show_widget_icon %}<img src="{{ widget_icon }}"
+							height="21" width="18" alt="ReCharge Subscription services icon" class="rc_popup__icon">
+						{% endif %}{{ subscription_details_label }}</a>
 					{% endif %}
-				</div> -->
+				</div>
+				{%- endcomment -%}
 			</div>
 		</div>
 	</div>

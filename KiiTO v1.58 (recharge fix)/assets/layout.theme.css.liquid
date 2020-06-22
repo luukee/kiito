@@ -116,6 +116,7 @@
     --danger: #d9534f;
     --light: #fff;
     --dark: #000;
+    --buttonBorder: 2px solid #fff;
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
@@ -125,6 +126,7 @@
     --font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 }
+
 
 *, :after, :before {
     box-sizing: border-box
@@ -2326,9 +2328,9 @@ select.form-control[multiple], select.form-control[size], textarea.form-control 
         display: inline-block
     }
 
-    .form-inline .custom-select, .form-inline .input-group {
+    /* .form-inline .custom-select, .form-inline .input-group {
         width: auto
-    }
+    } */
 
     .form-inline .form-check {
         display: -ms-flexbox;
@@ -3502,12 +3504,6 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     background-color: #fff
 }
 
-.custom-select[multiple], .custom-select[size]:not([size="1"]) {
-    height: auto;
-    padding-right: .75rem;
-    background-image: none
-}
-
 .custom-select:disabled {
     color: #6c757d;
     background-color: #e9ecef
@@ -3722,12 +3718,14 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     background-color: #dee2e6
 }
 
-.custom-control-label:before, .custom-file-label, .custom-select {
+.custom-control-label:before, .custom-file-label, 
+.custom-select {
     transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
 @media screen and (prefers-reduced-motion:reduce) {
-    .custom-control-label:before, .custom-file-label, .custom-select {
+    .custom-control-label:before, .custom-file-label, 
+    .custom-select {
         transition: none
     }
 }
@@ -8897,8 +8895,20 @@ input:not(.cart__qty-input):not([type="email"]) {
 
 input#add,
 button#add {
-	padding: 15px;
-  background-color: white;
+    border-radius: 0px;
+    color: rgb(0, 0, 0);
+    margin: 5px 0px 0px;
+    background-color: rgb(91, 192, 222);
+    width: 100%;
+    padding: 0.875em;
+    font-family: var(--font-family-sans-serif);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+button#add:hover {
+    background-color: rgb(59, 180, 216);
+    color: rgb(255, 255, 255);
 }
 
 .lead {
@@ -12275,12 +12285,9 @@ p.mini-cart__empty-message {
 
 
 /*       shop page recharge widget */
-
-	#rc_container .form-inline {
-		max-width: 353px;
-		margin: 0 auto;
-		align-items: center;
-	}
+#rc_container .form-inline {
+    align-items: flex-start;
+}
 
 	.rc_block label.rc_label {
 		line-height: 1 !important;
@@ -12307,20 +12314,21 @@ div.rc_block__type--active {
         display: block !important;
       }
 
-/*       product quantity toggle */
-	#quantity.quantity {
-		padding: 10px 6px 10px 18px;
-		width: 60px;
-		font-size: 1.25em;
-	}
+.rc_block__type__autodeliver {
+    margin-top: 9px !important;
+}
 
       .form-group.quantity {
     justify-content: flex-end;
-        flex: 0 0 30%;
+        flex: 0 0 17%;
 }
 .form-group.selectors {
-        flex: 0 1 70%;
-
+    flex: 0 1 77%;
+    max-width: 100%;
+}
+.selectors .rc_block__type--active label select option {
+    font-size: 12px;
+    width: 24%;
 }
 .rc_block__type__onetime {
     text-align: left;
@@ -12329,10 +12337,7 @@ div.rc_block__type--active {
     text-decoration: line-through;
     margin-bottom: 0;
 }
-.price-info-text {
-    /* color: #D63F60;
-    font-size: 1.25rem; */
-}
+
 .prices {
     width: fit-content;
     margin: auto;
@@ -12421,28 +12426,7 @@ div.rc_block__type--active {
     margin: 0 auto;
 }
 
-/* one time only checkbox selected */
 
-.onetimeonly .rc_block__type__autodeliver,
-.onetimeonly .subscription-note {
-    display: none;
-}
-
-.onetimeonly .description {
-    flex: 0 0 auto;
-}
- 
-.onetimeonly .form-group.quantity {
-    padding-bottom: 15px;
-}
-
-/*
-.onetimeonly .price-info-container {
-    flex: 1 1 auto;
-}
-.onetimeonly .footer {
-    flex: 0 1 auto;
-} */
 
 @media (max-width:991.98px) {
     .shop-products .image {
@@ -12454,10 +12438,10 @@ div.rc_block__type--active {
 
 
 /*       custom radio buttons */
-
 label.rc_label {
- font-family:   Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 1em;
+    font-family:   Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    width: 100%;
 }
 
 .custom-select {
@@ -12474,7 +12458,7 @@ label.rc_label {
     padding: 0 8px;
     text-align: left;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 .subscription-note h6 {
     padding-left: 0.6em;
@@ -12744,9 +12728,168 @@ a.navbar-toggler.edit-address.border-0.p-3 {
 form[action^="/cart/add"] [type=submit] {
     visibility: visible !important;
 }
+      
+      
+      /* one time only checkbox selected */
+
+.onetimeonly .rc_block__type__autodeliver,
+.onetimeonly .subscription-note {
+    display: none !important;
+}
+
+.onetimeonly .description {
+    flex: 0 0 auto;
+}
+ 
+.onetimeonly .form-group.quantity {
+    display: none !important;
+}
+
+/*
+.onetimeonly .price-info-container {
+    flex: 1 1 auto;
+}
+.onetimeonly .footer {
+    flex: 0 1 auto;
+} */
 
 /*get rid of the preview bar 
 iframe#preview-bar-iframe {
     display: none;
 }
 */
+
+
+
+
+
+
+    .pf-products .form-inline .form-group, .form-inline label {
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        margin-bottom: 0
+    }
+
+    .pf-products .form-inline .form-group {
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -ms-flex-align: center;
+        min-width: 100%;
+        padding: 0;
+    }
+
+
+/* size buttons: radios */
+.pf-products .product-variants input {
+    position: absolute;
+    opacity: 0;
+}
+/* size buttons */
+.pf-products .product-variants label,
+.pf-p-variant-radio label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: var(--buttonBorder);
+    font: 16px var(--font-family-sans-serif);
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.rc_block {
+    position: relative;
+}
+/* radio button containers */
+.pf-p-variant-radio > div {
+    position: relative;
+    flex: 1 0 auto;
+    margin: 0 5px 0 0 !important;
+}
+.pf-products .selectors .rc_block {
+    display: flex;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+/* radio buttons: radios */
+.pf-products input[type=radio] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+/* product quantity toggle */
+.pf-products #quantity.quantity {
+    display: none;
+}
+.pf-products .selectors label span,
+.pf-products .selectors .rc_label__onetime {
+    margin-left: 25px;
+}
+
+
+/* # bottles buttons container */
+.pf-p-variant-radio {
+    display: flex !important;
+    align-items: center;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+/* selected radio button */
+.pf-products .pf-p-variant:first-of-type .pf-p-variant-radio > div:not(:first-child) input[type=radio]:checked + label,
+.pf-p-variant-radio > div input:checked + label {
+    background: #fff !important;
+    color: #000 !important;
+    padding: .875em;
+    cursor: pointer;
+    border: var(--buttonBorder) !important;
+} 
+
+/* custom radio buttons */
+.pf-products .selectors .rc_block__type label:before {
+	content: '';
+    left: 0;
+    top: 2px;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	border: var(--buttonBorder);
+	border-radius: 100%;
+	background: #000;
+	z-index: 0;
+}
+.pf-products .rc_block__type--active label:after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border: var(--buttonBorder);
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 100%;
+    z-index: 0;
+    transition: none;
+}
+
+/* product quantity container */
+.product-quantity {
+    border: var(--buttonBorder);
+}
+
+
+.pf-products .rc_select:focus {
+    outline: none !important;
+}
+.pf-products .rc_select option {
+    position: relative;
+}
+
+.pf-products #rc_radio_options {
+    width: 100%;
+}
+
