@@ -1,0 +1,479 @@
+{% comment %}
+
+  © 2018 Atlas Group, Inc. All rights reserved.
+
+  No portion of this software code may be reproduced, distributed or modified
+  without prior express written authorization of Atlas Group, Inc.
+
+  Unauthorized reproduction or copying of this software code, via any medium,
+  is strictly prohibited and may subject you to severe legal liability.
+
+{% endcomment %}
+
+<div class="order">
+
+  <div class="py-5 my-5">
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-auto">
+
+          <div class="title">
+
+            <div class="text-left">
+
+              <h1 class="mb-5">
+
+                Order {{ order.name }}
+
+              </h1>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col">
+
+          {{ order.created_at | date : "%B %e, %Y" }}
+
+          {% if order.cancelled %}
+
+            &mdash;
+
+            Cancelled on {{ order.cancelled_at | date : "%B %e, %Y" }}
+
+          {% endif %}
+
+        </div>
+
+        <div class="col-auto">
+
+          <div class="link">
+
+            <a href="/account">
+
+              Back to Account
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-9">
+
+          <div class="mb-5">
+
+            <div class="header">
+
+              <div class="row">
+
+                <div class="col-8">
+
+                  <div class="text-left">
+
+                    Product
+
+                  </div>
+
+                </div>
+
+                <div class="col-2">
+
+                  <div class="text-center">
+
+                    Quantity
+
+                  </div>
+
+                </div>
+
+                <div class="col-2">
+
+                  <div class="text-right">
+
+                    Total
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            {% for item in order.line_items %}
+
+              <hr class="my-3">
+
+              <div class="row">
+
+                <div class="col-8">
+
+                  <div class="row">
+
+                    <div class="col-3">
+
+                      <img class="w-100" src="{{ item.image.src | img_url : 'master' }}" alt="{{ item.image.alt }}">
+
+                    </div>
+
+                    <div class="col-9">
+
+                      <p>
+
+                        {{ item.title | link_to : item.product.url }}
+
+                      </p>
+
+                      {% if item.fulfillment %}
+
+                        <p>
+
+                          {{ item.fulfillment.tracking_company }}
+
+                          {% if item.fulfillment.tracking_number %}
+
+                            {{ item.fulfillment.tracking_number }}
+
+                          {% endif %}
+
+                          <br>
+
+                          {{ item.fulfillment.created_at | date : "%B %e, %Y" }}
+
+                          <br>
+
+                          {% if item.fulfillment.tracking_url %}
+
+                            <u>
+
+                              <a href="{{ item.fulfillment.tracking_url }}">
+
+                                Track
+
+                              </a>
+
+                            </u>
+
+                          {% endif %}
+
+                        </p>
+
+                      {% endif %}
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="col-2">
+
+                  <div class="text-center">
+
+                    {{ item.quantity }}
+
+                  </div>
+
+                </div>
+
+                <div class="col-2">
+
+                  <div class="text-right">
+
+                    {{ item.quantity | times : item.price | money }}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            {% endfor %}
+
+            <div class="summary">
+
+              <hr class="my-3">
+
+              <div class="row justify-content-end">
+
+                <div class="col-lg-6">
+
+                  <div class="row">
+
+                    <div class="col">
+
+                      <div class="text-left">
+
+                        <p>
+
+                          Subtotal
+
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col">
+
+                      <div class="text-right">
+
+                        <p>
+
+                          {{ order.subtotal_price | money }}
+
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  {% for discount in order.discounts %}
+
+                    <div class="row">
+
+                      <div class="col">
+
+                        <div class="text-left">
+
+                          <p>
+
+                            {{ discount.code }}
+
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col">
+
+                        <div class="text-right">
+
+                          <p>
+
+                            {{ discount.savings | money }}
+
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  {% endfor %}
+
+                  {% for method in order.shipping_methods %}
+
+                    <div class="row">
+
+                      <div class="col">
+
+                        <div class="text-left">
+
+                          <p>
+
+                            {{ method.title }}
+
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col">
+
+                        <div class="text-right">
+
+                          <p>
+
+                            {{ method.price | money }}
+
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  {% endfor %}
+
+                  {% for line in order.tax_lines %}
+
+                    <div class="row">
+
+                      <div class="col">
+
+                        <div class="text-left">
+
+                          <p>
+
+                            {{ line.title }} {{ line.rate | times : 100 }}%
+
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col">
+
+                        <div class="text-right">
+
+                          <p>
+
+                            {{ line.price | money }}
+
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  {% endfor %}
+
+                  <div class="row">
+
+                    <div class="col">
+
+                      <div class="text-left">
+
+                        <p>
+
+                          Total
+
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col">
+
+                      <div class="text-right">
+
+                        <p>
+
+                          {{ order.total_price | money }}
+
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-lg-3">
+
+          <div class="shipping">
+
+            <div class="title">
+
+              <div class="text-left">
+
+                <p class="mb-3">
+
+                  Shipping Address
+
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="rule">
+
+              <div class="text-left">
+
+                <hr class="mb-3">
+
+              </div>
+
+            </div>
+
+            <div class="address">
+
+              <div class="mb-5">
+
+                {{ order.shipping_address | format_address }}
+
+              </div>
+
+            </div>
+
+          </div>
+
+            <div class="billing">
+
+              <div class="title">
+
+                <div class="text-left">
+
+                  <p class="mb-3">
+
+                    Billing Address
+
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div class="rule">
+
+                <div class="text-left">
+
+                  <hr class="mb-3">
+
+                </div>
+
+              </div>
+
+              <div class="address">
+
+                <div class="mb-5">
+
+                  {{ order.billing_address | format_address }}
+
+                </div>
+
+              </div>
+
+            </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

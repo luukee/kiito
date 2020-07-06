@@ -1,0 +1,1 @@
+function cstAddItemToCart(t,a,e,i,n){data={quantity:a,id:t,"properties[shipping_interval_frequency]":e,"properties[shipping_interval_unit_type]":i,"properties[subscription_id]":n},jQuery.ajax({type:"POST",url:"/cart/add.js",data:data,dataType:"json",success:function(){alert("Success...Data: \n"+data)}}),window.location="/checkout"}

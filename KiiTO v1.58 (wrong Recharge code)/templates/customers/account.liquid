@@ -1,0 +1,274 @@
+
+{% comment %}
+
+  © 2018 Atlas Group, Inc. All rights reserved.
+
+  No portion of this software code may be reproduced, distributed or modified
+  without prior express written authorization of Atlas Group, Inc.
+
+  Unauthorized reproduction or copying of this software code, via any medium,
+  is strictly prohibited and may subject you to severe legal liability.
+
+{% endcomment %}
+
+<div class="account">
+
+  {% paginate customer.orders by 20 %}
+
+    <div class="py-5 my-5">
+
+      <div class="container px-3">
+
+        <div class="row">
+
+          <div class="col">
+
+            <div class="title">
+
+              <div class="text-left">
+
+                <h1 class="py-2 mb-5">
+
+                  My Account
+
+                </h1>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-auto">
+
+            <div class="button">
+
+              <div class="text-right">
+
+                <a class="btn btn-link py-2 " href="/account/logout">
+
+                  Sign Out
+
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-9">
+
+            {% if customer.orders.size != 0 %}
+
+              <div class="header account-header pb-1">
+
+                <div class="row">
+
+                  <div class="col">
+
+                    <div class="text-left">
+
+                      Order
+
+                    </div>
+
+                  </div>
+
+                  <div class="col">
+
+                    <div class="text-center">
+
+                      Date
+
+                    </div>
+
+                  </div>
+
+                  <div class="col">
+
+                    <div class="text-center">
+
+                      Payment Status
+
+                    </div>
+
+                  </div>
+
+                  <div class="col">
+
+                    <div class="text-center">
+
+                      Fulfillment Status
+
+                    </div>
+
+                  </div>
+
+                  <div class="col">
+
+                    <div class="text-right">
+
+                      Total
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="orders">
+
+                {% for order in customer.orders %}
+
+                  <div class="order">
+
+                    <hr class="my-3">
+
+                    <div class="row">
+
+                      <div class="col">
+
+                        <div class="text-left">
+
+                          <u>
+
+                            {{ order.name | link_to : order.customer_url }}
+
+                          </u>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col">
+
+                        <div class="text-center">
+
+                          {{ order.created_at | date : "%B %e, %Y" }}
+
+                        </div>
+
+                      </div>
+
+                      <div class="col">
+
+                        <div class="text-center">
+
+                          {{ order.financial_status_label }}
+
+                        </div>
+
+                      </div>
+
+                      <div class="col">
+
+                        <div class="text-center">
+
+                          {{ order.fulfillment_status_label }}
+
+                        </div>
+
+                      </div>
+
+                      <div class="col">
+
+                        <div class="text-right">
+
+                          {{ order.total_price | money }}
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                {% endfor %}
+
+              </div>
+
+            {% else %}
+
+              <p>
+
+                You haven't placed any orders yet.
+
+              </p>
+
+            {% endif %}
+
+          </div>
+          
+          {% if customer.metafields.subscriptions.customer_string %}
+          <div class="col-lg-9">
+            <!-- Begin ReCharge code -->
+            <p><a href="/tools/recurring/customers/{{ customer.metafields.subscriptions.customer_string }}/subscriptions/" class="text-center btn btn-dark btn-block my-2">Manage Subscriptions</a></p>
+            <!-- End ReCharge code -->
+          </div>
+          {% endif %}
+
+          <div class="col-lg-3">
+
+            <div class="address">
+
+              <div class="title">
+
+                <div class="text-left">
+
+                  <p class="mb-3">
+
+                    Primary Address
+
+                  </p>
+
+                </div>
+
+              </div>
+
+              <div class="rule">
+
+                <div class="text-left">
+
+                  <hr class="mb-3">
+
+                </div>
+
+              </div>
+
+              <div class="address">
+
+                <div class="mb-5">
+
+                  {{ customer.default_address | format_address }}
+
+                </div>
+
+              </div>
+
+              <a class="btn btn-dark btn-block py-2" href="/account/addresses">
+
+                Edit Addresses ( {{ customer.addresses_count }} )
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  {% endpaginate %}
+
+</div>

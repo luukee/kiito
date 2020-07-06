@@ -1,0 +1,215 @@
+<div class="carousel carousel-fade slide mb-5" data-ride="carousel" data-interval="2000" id="{{ section.id }}">
+
+  <ol class="carousel-indicators">
+
+    {% for block in section.blocks %}
+
+      {% assign index = forloop.index | minus : 1 %}
+
+      <li data-target="#{{ section.id }}" data-slide-to="{{ index }}" class="{% if forloop.first %}active{% endif %}"></li>
+
+    {% endfor %}
+
+  </ol>
+
+  <div class="carousel-inner">
+
+    {% for block in section.blocks %}
+
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+
+        <a href="{{ block.settings.url }}">
+
+          <div class="card bg-transparent rounded-0 border-0">
+
+            <div class="card-img rounded-0">
+
+              <div class="d-lg-none">
+
+                <div class="embed-responsive embed-responsive-2by3">
+
+                  <div class="embed-responsive-item">
+
+                    <img class="w-100" src="{{ block.settings.portrait | img_url : 'master' }}">
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="d-none d-lg-block">
+
+                <div class="embed-responsive embed-responsive-16by9">
+
+                  <div class="embed-responsive-item">
+
+                    <img class="lazyload w-100" data-src="{{ block.settings.landscape | img_url : 'master' }}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="card-img-overlay pb-sm-3 pb-md-5 px-3">
+
+              <div class="container-fluid h-100 p-0">
+
+                <div class="row justify-content-center no-gutters h-100">
+
+                  <div class="col-lg-auto align-self-center">
+
+                    {% if block.settings.title != blank %}
+
+                      <div class="title" data-transition="entrance" style="transform : translateY( 50px )">
+
+                        <div class="text-center">
+
+                          <h1 class="text-uppercase display-1 pb-1 mb-3">
+
+                            {{ block.settings.title }}
+
+                          </h1>
+
+                        </div>
+
+                      </div>
+
+                    {% endif %}
+
+                    {% if block.settings.button != blank %}
+
+                      <div class="button" data-transition="entrance" style="transform : translateY( 50px )">
+
+                        <div class="text-center">
+
+                          <button class="btn btn-secondary text-white h-auto px-4 py-3">
+
+                            {{ block.settings.button }}
+
+                          </button>
+
+                        </div>
+
+                      </div>
+
+                    {% endif %}
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+</div>
+
+{% schema %}
+
+  {
+
+    "presets" : [
+
+      {
+
+        "category" : "Homepage",
+
+        "name" : "Carousel"
+
+      }
+
+    ],
+
+    "blocks" : [
+
+      {
+
+        "name" : "Item",
+
+        "type" : "item",
+
+        "settings" : [
+
+          {
+
+            "type" : "image_picker",
+
+            "label" : "Portrait",
+
+            "id" : "portrait",
+
+            "info" : "2×3"
+
+          },
+
+          {
+
+            "type" : "image_picker",
+
+            "label" : "Landscape",
+
+            "id" : "landscape",
+
+            "info" : "16×9"
+
+          },
+
+          {
+
+            "default" : "Title",
+
+            "label" : "Title",
+
+            "type" : "text",
+
+            "id" : "title"
+
+          },
+
+          {
+
+            "default" : "Button",
+
+            "label" : "Button",
+
+            "type" : "text",
+
+            "id" : "button"
+
+          },
+
+          {
+
+            "default" : "/",
+
+            "label" : "URL",
+
+            "type" : "url",
+
+            "id" : "url"
+
+          }
+
+        ]
+
+      }
+
+    ]
+
+  }
+
+{% endschema %}
