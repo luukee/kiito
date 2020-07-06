@@ -17,7 +17,7 @@
       "remove": "Remove",
       "subtotal": "Subtotal",
       "savings": "You're saving",
-      "view_cart": "Checkout",
+      "view_cart": "View Cart",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
       "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping<\/a> calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",

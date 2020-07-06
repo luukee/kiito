@@ -20,9 +20,9 @@
       "navigation": {
         "type": "navigation",
         "settings": {
-          "show_announcement": false,
+          "show_announcement": true,
           "home_page_only": false,
-          "announcement_text": "<p>Use <b>STAYPLANTED<\/b> for 15% off 12 &amp; 30 packs<\/p><sub>10% of proceeds donated to Keck Medicine of USC COVID-19 Emergency Fund<\/sub>",
+          "announcement_text": "<p>Use <b>KiiTO15<\/b> for 15% off your order<\/p><sub>for a limited time<\/sub>",
           "announcement_link": "shopify:\/\/collections\/shop",
           "announcement_color_bg": "#2a9dcc",
           "announcement_color_text": "#000000"

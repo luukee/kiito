@@ -226,8 +226,19 @@ PLEASE REMOVE ONLY AFTER YOU UNINSTALLED THE PAGEFLY APP.
   
   }
 </script>
-    
-</head>
+        <!-- tiktok pixel -->
+    <script>
+      (function () {
+        var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
+        ta.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=BRCL8D8UB1JFH3P9SD8G';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ta, s);
+      })();
+    </script>
+    <!-- END tiktok pixel -->
+ 
+{% render 'pagefly-header' %}
+ </head> 
 
 <body class="bg-dark"><div class="pagefly-container">{{ content_for_layout }}</div></body>
 
