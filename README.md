@@ -23,9 +23,8 @@ Plant Powered Superfuel https://drinkkiito.com/
 9) Create the branch locally and then push to GitHub. A feature branch should always be 'publicly' available. That is, development should never exist in just one developer's local branch.
 
 ```
-$ git checkout -b dup-theme-name master
-// creates a local branch for the new feature
-```               `
+$ git checkout -b dup-theme-name master                 // creates a local branch for the new feature
+```
 
 `$ git push origin dup-theme-name                  // makes the new feature remotely available`
 
