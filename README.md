@@ -19,3 +19,4 @@ Plant Powered Superfuel https://drinkkiito.com/
 6) In Motifmate click download button on far left.
 7) Find the local repo ex. KiiTO and download.
 - this will allow you to have the exact files on the live theme, make changes and continue version control.
+8) In terminal run `git status` to ensure you are on the correct repo.
