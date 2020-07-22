@@ -26,7 +26,9 @@ Plant Powered Superfuel https://drinkkiito.com/
 $ git checkout -b dup-theme-name master                 // creates a local branch for the new feature
 ```
 
-`$ git push origin dup-theme-name                  // makes the new feature remotely available`
+```
+$ git push origin dup-theme-name                        // makes the new feature remotely available
+```
 
 Periodically, changes made to master (if any) should be merged back into your feature branch.
 
