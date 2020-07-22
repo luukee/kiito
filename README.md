@@ -16,8 +16,11 @@ Plant Powered Superfuel https://drinkkiito.com/
 3) Open Motifmate, select store and select duplicate theme.
 4) In Motifmate select three dots ... `/ Folder / Connect`
 5) Select the local theme repo 
+
     ex. KiiTO folder contains:
+
     `assets, config, layout, locales, sections, snippets, templates`
+    
 6) In Motifmate click download button on far left.
 7) Find the local repo ex. KiiTO and download.
     - This will allow you to have the exact files on the live theme, make changes and continue version control.
