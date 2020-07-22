@@ -22,7 +22,7 @@ Plant Powered Superfuel https://drinkkiito.com/
 8) In terminal run ```git status``` to ensure you are on the correct repo.
 9) Create the branch locally and then push to GitHub. A feature branch should always be 'publicly' available. That is, development should never exist in just one developer's local branch.
 
-```$ git checkout -b feature-id master                 // creates a local branch for the new feature```
+`$ git checkout -b feature-id master                 // creates a local branch for the new feature`
 ```$ git push origin feature-id                        // makes the new feature remotely available```
 Periodically, changes made to master (if any) should be merged back into your feature branch.
 
