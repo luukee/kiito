@@ -32,10 +32,10 @@ Periodically, changes made to master (if any) should be merged back into your fe
 
 When development on the feature is complete, the lead (or engineer in charge) should merge changes into master and then make sure the remote branch is deleted.
 
-```$ git checkout master                                // change to the master branch``` 
+`$ git checkout master                                // change to the master branch` 
 
 `$ git merge --no-ff feature-id                       // makes sure to create a commit object during merge`
 
 `$ git push origin master                            // push merge changes`
 
-```$ git push origin :feature-id                       // deletes the remote branch```
+`$ git push origin :feature-id                       // deletes the remote branch`
