@@ -34,8 +34,8 @@ When development on the feature is complete, the lead (or engineer in charge) sh
 
 ```$ git checkout master                                // change to the master branch``` 
 
-```$ git merge --no-ff feature-id                       // makes sure to create a commit object during merge```
+`$ git merge --no-ff feature-id                       // makes sure to create a commit object during merge`
 
-```$ git push origin master                            // push merge changes```
+`$ git push origin master                            // push merge changes`
 
 ```$ git push origin :feature-id                       // deletes the remote branch```
