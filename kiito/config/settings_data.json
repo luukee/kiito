@@ -22,9 +22,9 @@
         "settings": {
           "show_announcement": false,
           "home_page_only": false,
-          "announcement_text": "<p>Use <b>KiiTO15<\/b> for 15% off your order<\/p><sub>for a limited time<\/sub>",
+          "announcement_text": "<style>\n@media (min-width: 992px) {\n    .carousel-item .col-lg-auto.align-self-center {\n        margin-bottom: 3rem;\n    }\n}\n<\/style>",
           "announcement_link": "shopify:\/\/collections\/shop",
-          "announcement_color_bg": "#2a9dcc",
+          "announcement_color_bg": "rgba(0,0,0,0)",
           "announcement_color_text": "#000000"
         }
       },
@@ -638,41 +638,19 @@
       "1544813166768": {
         "type": "carousel",
         "blocks": {
-          "1544813181929": {
+          "1596636614074": {
             "type": "item",
             "settings": {
-              "portrait": "shopify:\/\/shop_images\/MOBILE_3eyes_2.jpg",
-              "landscape": "shopify:\/\/shop_images\/DESKTOP_3eyes_2.jpg",
-              "title": "Plant Powered Superfuel",
+              "portrait": "shopify:\/\/shop_images\/kiito-contentshoot-web-mobile-2_1.jpg",
+              "landscape": "shopify:\/\/shop_images\/kiito-contentshoot-web-1.jpg",
+              "title": "Plant Protein Perfected",
               "button": "Learn More",
-              "url": "shopify:\/\/pages\/what-is-kiito"
-            }
-          },
-          "1544813170161": {
-            "type": "item",
-            "settings": {
-              "portrait": "shopify:\/\/shop_images\/MOBILE_CHOC.jpg",
-              "landscape": "shopify:\/\/shop_images\/DESKTOP_CHOC.jpg",
-              "title": "The Cleanest Protein Drink Ever",
-              "button": "Learn More",
-              "url": "shopify:\/\/pages\/what-is-kiito"
-            }
-          },
-          "1544813212460": {
-            "type": "item",
-            "settings": {
-              "portrait": "shopify:\/\/shop_images\/MOBILE_VANILLA.jpg",
-              "landscape": "shopify:\/\/shop_images\/DESKTOP_VANILLA.jpg",
-              "title": "Superfueling humankind",
-              "button": "Learn More",
-              "url": "shopify:\/\/pages\/what-is-kiito"
+              "url": "shopify:\/\/collections\/shop"
             }
           }
         },
         "block_order": [
-          "1544813181929",
-          "1544813170161",
-          "1544813212460"
+          "1596636614074"
         ],
         "settings": {
         }
@@ -700,13 +678,23 @@
         ],
         "settings": {
         }
+      },
+      "1596687529303": {
+        "type": "text",
+        "settings": {
+          "title": "",
+          "text": "",
+          "link": "",
+          "learnmorelink": "\/"
+        }
       }
     },
     "content_for_index": [
       "1544813166768",
       "1544491885909",
       "1544492561977",
-      "1544492914985"
+      "1544492914985",
+      "1596687529303"
     ]
   }
 }
