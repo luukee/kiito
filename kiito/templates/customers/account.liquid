@@ -40,6 +40,20 @@
           </div>
 
           <div class="col-auto">
+          
+            <div class="button">
+          
+              <div class="text-right">
+          
+                <a class="btn btn-link py-2" href="/tools/recurring/login/">Manage Subscriptions</a>
+
+              </div>
+          
+            </div>
+          
+          </div>
+
+          <div class="col-auto">
 
             <div class="button">
 
@@ -206,24 +220,6 @@
             {% endif %}
 
           </div>
-          
-          {% if customer.metafields.subscriptions.customer_string %}
-          
-          <div class="col-lg-9">
-            <!-- Begin ReCharge code -->
-            <p><a href="/tools/recurring/login/">Manage Subscriptions</a></p>
-            <!-- End ReCharge code -->
-            <!-- Begin ReCharge code -->
-            {%- comment -%}
-            old recharge code
-                        <p><a href="/tools/recurring/customers/{{ customer.metafields.subscriptions.customer_string }}/subscriptions/"
-                            class="text-center btn btn-dark btn-block my-2">Manage Subscriptions</a></p>
-
-            {%- endcomment -%}
-            <!-- End ReCharge code -->
-          </div>
-          
-          {% endif %}
 
           <div class="col-lg-3">
 
