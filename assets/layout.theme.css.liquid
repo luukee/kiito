@@ -648,6 +648,10 @@ pre code {
     margin-left: -10px
 }
 
+.row--baseline {
+    align-items: baseline;
+}
+
 .no-gutters {
     margin-right: 0;
     margin-left: 0
@@ -3872,7 +3876,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     .announcement-bar__message {
         padding:10px calc(10px + 12px);
         align-items: center;
-        font-size: 12px;
+        font-size: 19px;
         display: flex;
         flex-direction: column;
     }
@@ -12050,6 +12054,13 @@ color: #57c9e4 !important; /* change color */
 
 .what-is-kiito .embed-responsive {
     overflow: visible;
+    padding: 25vw;
+}
+
+@media (min-width: 992px) {
+    .what-is-kiito .embed-responsive {
+        padding: 0;
+    }
 }
 
 .lazyloading {
@@ -12369,6 +12380,10 @@ div.rc_block__type--active {
     font-size: 12px;
     width: 24%;
 }
+.selectors .rc_block__type--active label select {
+
+}
+
 .rc_block__type__onetime {
     text-align: left;
 }
@@ -12890,11 +12905,11 @@ iframe#preview-bar-iframe {
 .pf-products .selectors .rc_block__type label:before,
 .pf-product .selectors .rc_block__type label:before {
 	content: '';
-    left: 0;
-    top: 2px;
+    left: 1px;
+    top: 1px;
 	position: absolute;
-	width: 18px;
-	height: 18px;
+	width: 17px;
+	height: 17px;
 	border: var(--buttonBorder);
 	border-radius: 100%;
 	background: #000;
