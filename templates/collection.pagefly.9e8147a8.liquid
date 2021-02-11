@@ -1,3 +1,4 @@
+{% capture captured_page %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400|Oswald:400|Roboto:400,500,700&display=swap"><link rel="stylesheet" href="https://cdn.pagefly.io/pagefly/2.14.10/css/main-style.css?t=20201103101107"><link rel="stylesheet" href="{{ 'pagefly.9e8147a8.css' | asset_url }}">
 		  {% if product_1914813644898 == null %}{%- assign product_1914813644898 = all_products['chocolate-maca'] -%}{% endif %} {% if product_1914817544290 == null %}{%- assign product_1914817544290 = all_products['matcha-moringa'] -%}{% endif %} {% if product_1914810957922 == null %}{%- assign product_1914810957922 = all_products['vanilla-ashwagandha'] -%}{% endif %} {% if product_4350514004066 == null %}{%- assign product_4350514004066 = all_products['mocha-latte'] -%}{% endif %} {% if product_4365318193250 == null %}{%- assign product_4365318193250 = all_products['chocolate-vanilla'] -%}{% endif %} {% if product_4461337542754 == null %}{%- assign product_4461337542754 = all_products['4-flavor-mixed-case'] -%}{% endif %} {% if product_4461353795682 == null %}{%- assign product_4461353795682 = all_products['trial-6-pack'] -%}{% endif %}<script>
 	window.__pageflyProducts = window.__pageflyProducts || {};
@@ -383,3 +384,5 @@ $(window).load(function() {
       alert("window load occurred!");
 });
 */</script>
+{% endcapture %}
+{% include 'password-protect' %}

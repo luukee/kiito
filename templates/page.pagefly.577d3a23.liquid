@@ -1,3 +1,4 @@
+{% capture captured_page %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400|Oswald:400|Roboto:400|Chalet+Comprime+Cologne+Sixty,+sans-serif:400&display=swap"><link rel="stylesheet" href="https://cdn.pagefly.io/pagefly/2.9.1/css/main-style.css?t=20200406130445"><link rel="stylesheet" href="{{ 'pagefly.577d3a23.scss.css' | asset_url }}">
 		  <script>
 	window.__pageflyProducts = window.__pageflyProducts || {};
@@ -53,3 +54,5 @@
 					window.__pagefly_setting__={"baseURL":"https://apps.pagefly.io","analyticsURL":"https://analytics.pagefly.io","isBackend":false,"cdnURL":"https://cdn.pagefly.io","pageflyVersion":"2.9.1","shopDomain":"drinkkiito.myshopify.com","elementData":{"pf-c1ae089d":{"listPosition":"bottom","limit":5,"height":"200px","spacing":"10px","listLayout":"slider","_type":"ProductImage"}},"pageTitle":"Collection - Limelight","pageType":"page","pageId":"577d3a23-d055-437d-9cca-23ffc5623eba","lazyLoad":false,"imageLazyLoad":false,"nativeImageLazyLoad":true,"trackingIDs":[]};
 					window.__pagefly_setting__.moneyFormat = {{shop.money_format | json}}
 				</script><script src="https://cdn.pagefly.io/pagefly/2.9.1/core/helper.js?t=20200406130445" defer></script>
+{% endcapture %}
+{% include 'password-protect' %}

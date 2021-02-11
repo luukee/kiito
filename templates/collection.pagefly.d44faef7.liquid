@@ -1,3 +1,4 @@
+{% capture captured_page %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400|Oswald:400|Roboto:400,500,700&display=swap"><link rel="stylesheet" href="https://cdn.pagefly.io/pagefly/2.13.6/css/main-style.css?t=20200827160825"><link rel="stylesheet" href="{{ 'pagefly.d44faef7.scss.css' | asset_url }}">
 		  {% if product_4461337542754 == null %}{%- assign product_4461337542754 = all_products['4-flavor-mixed-case'] -%}{% endif %} {% if product_4294231457890 == null %}{%- assign product_4294231457890 = all_products['dark-chocolate-prepaid'] -%}{% endif %} {% if product_4489604333666 == null %}{%- assign product_4489604333666 = all_products['matcha-latte-prepaid'] -%}{% endif %} {% if product_4489604956258 == null %}{%- assign product_4489604956258 = all_products['vanilla-bean-prepaid'] -%}{% endif %} {% if product_4489603678306 == null %}{%- assign product_4489603678306 = all_products['chocolate-vanilla-prepaid'] -%}{% endif %} {% if product_4461353795682 == null %}{%- assign product_4461353795682 = all_products['trial-6-pack'] -%}{% endif %} {% if product_4489604694114 == null %}{%- assign product_4489604694114 = all_products['mocha-latte-prepaid'] -%}{% endif %}<script>
 	window.__pageflyProducts = window.__pageflyProducts || {};
@@ -693,3 +694,5 @@ if(is_chrome){
   document.write('{{- 'chrome.css' | asset_url | stylesheet_tag -}}');
 }
 </script>
+{% endcapture %}
+{% include 'password-protect' %}

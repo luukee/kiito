@@ -1,3 +1,4 @@
+{% capture captured_page %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400|Oswald:400|Roboto:400&display=swap"><link rel="stylesheet" href="https://cdn.pagefly.io/pagefly/2.11.0/css/main-style.css?t=20200520130538"><link rel="stylesheet" href="{{ 'pagefly.269c93da.scss.css' | asset_url }}">
 		  <script>
 	window.__pageflyProducts = window.__pageflyProducts || {};
@@ -134,3 +135,5 @@
 
   });
 };</script>
+{% endcapture %}
+{% include 'password-protect' %}
