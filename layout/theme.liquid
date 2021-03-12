@@ -82,9 +82,6 @@
 
     {{- 'styles.css' | asset_url | stylesheet_tag -}}
 
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js?ckcachebust=586898796"></script>
-
-
       <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'g-addtocart.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
   <!--[if lte IE 9]><script src="{{ 'g-addtocart.js' | asset_url }}"></script><![endif]-->
 
@@ -197,55 +194,56 @@
     
 
     <meta name="google-site-verification" content="xxl6am69ItGROPQl6gJXqcI5x02-ZZr1WVbr6s8wMxA" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js?ckcachebust=586898796"></script>
 
     {% include 'minmaxify-head' %}
     
-  <script>
+    <script>
    function getUrlVars() {
       var vars = {};
       var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
           vars[key] = value;
       });
       return vars;
-    }
-    function getUrlParam(parameter, defaultvalue){
-        var urlparameter = defaultvalue;
-        if(window.location.href.indexOf(parameter) > -1){
-            urlparameter = getUrlVars()[parameter];
-            }
-        return urlparameter;
-    }
-    var _defaultValue = false;
-    var checkUnifyCheckout = getUrlParam('unify', _defaultValue);
-    if(checkUnifyCheckout)
-    {
-      var scriptTag = document.createElement("script");
-      scriptTag.src ="https://platform.unify.to/assets/js/shopify.js";
-      document.getElementsByTagName('head')[0].appendChild(scriptTag);
-    var unifyWhitelistedCheckoutDomain='checkout.drinkkiito.com';
-    
-    }
-  </script>
-  <!-- tiktok pixel -->
-  <script>
-    (function () {
-      var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
-      ta.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=BRCL8D8UB1JFH3P9SD8G';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(ta, s);
-    })();
-  </script>
-  <!-- END tiktok pixel -->
+  }
+  function getUrlParam(parameter, defaultvalue){
+      var urlparameter = defaultvalue;
+      if(window.location.href.indexOf(parameter) > -1){
+          urlparameter = getUrlVars()[parameter];
+          }
+      return urlparameter;
+  }
+  var _defaultValue = false;
+  var checkUnifyCheckout = getUrlParam('unify', _defaultValue);
+  if(checkUnifyCheckout)
+  {
+    var scriptTag = document.createElement("script");
+    scriptTag.src ="https://platform.unify.to/assets/js/shopify.js";
+    document.getElementsByTagName('head')[0].appendChild(scriptTag);
+   var unifyWhitelistedCheckoutDomain='checkout.drinkkiito.com';
+  
+  }
+</script>
+        <!-- tiktok pixel -->
+    <script>
+      (function () {
+        var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
+        ta.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=BRCL8D8UB1JFH3P9SD8G';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ta, s);
+      })();
+    </script>
+    <!-- END tiktok pixel -->
 
  
 {% render 'pagefly-header' %}
 
   <script>
-    // $(function () {
-    //   $("[multiple]").selectable({
+    $(function () {
+      $("[multiple]").selectable({
 
-    //   });
-    // });
+      });
+    });
   </script>
 {%- comment -%}Tapjoy snippet{%- endcomment -%}
 {% include 'tapjoy' %}
@@ -526,65 +524,71 @@
 
     </div>
 
-    <!-- <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js?ckcachebust=586898796"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js?ckcachebust=586898796"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js?ckcachebust=586898796"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js?ckcachebust=586898796"></script>
 
+
+
     {% include 'script-tags' , layout : 'theme' %}
+
 
     {% include 'ajaxify-cart' %}
 
-  <!-- Drip -->
-  <script type="text/javascript">
-    var _dcq = _dcq || [];
-    var _dcs = _dcs || {};
-    _dcs.account = '2939181';
 
-    (function() {
-      var dc = document.createElement('script');
-      dc.type = 'text/javascript'; dc.async = true;
-      dc.src = '//tag.getdrip.com/2939181.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(dc, s);
-    })();
-  </script>
-  <!-- end Drip -->
 
-  <script text="text/javascript">
-    var _learnq = _learnq || [];
 
-    var item = {
-      Name: {{ product.title|json }},
-      ProductID: {{ product.id|json }},
-      Categories: {{ product.collections|map:'title'|json }},
-      ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
-      URL: "{{ shop.secure_url }}{{ product.url }}",
-      Brand: {{ product.vendor|json }},
-      Price: {{ product.price|money|json }},
-      CompareAtPrice: {{ product.compare_at_price_max|money|json }}
-    };
+<!-- Drip -->
+<script type="text/javascript">
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {};
+  _dcs.account = '2939181';
 
-    _learnq.push(['track', 'Viewed Product', item]);
-    _learnq.push(['trackViewedItem', {
-      Title: item.Name,
-      ItemId: item.ProductID,
-      Categories: item.Categories,
-      ImageUrl: item.ImageURL,
-      Url: item.URL,
-      Metadata: {
-        Brand: item.Brand,
-        Price: item.Price,
-        CompareAtPrice: item.CompareAtPrice
-      }
-    }]);
-  </script>
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = '//tag.getdrip.com/2939181.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+<!-- end Drip -->
 
-  {% include 'limitsify' %}
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>
+
+{% include 'limitsify' %}
   {% include 'subscription-theme-footer' %}
 
-</body>
+	        </body>
 
 
 </html>

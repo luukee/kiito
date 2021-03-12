@@ -1,3 +1,4 @@
+{% capture captured_page %}
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400|Oswald:400|Roboto:400,500,700&display=swap"><link rel="stylesheet" href="https://cdn.pagefly.io/pagefly/2.17.8/css/main-style.css?t=20210312070314"><link rel="stylesheet" href="{{ 'pagefly.9c0ef013.css' | asset_url }}">
 		  {% if product_4532809498722 == null %}{%- assign product_4532809498722 = all_products['cookies-and-cream'] -%}{% endif %} {% if product_1914813644898 == null %}{%- assign product_1914813644898 = all_products['chocolate-maca'] -%}{% endif %} {% if product_4532812185698 == null %}{%- assign product_4532812185698 = all_products['coconut-cashew'] -%}{% endif %} {% if product_4532814020706 == null %}{%- assign product_4532814020706 = all_products['mixed-case-6-flavors'] -%}{% endif %} {% if product_1914817544290 == null %}{%- assign product_1914817544290 = all_products['matcha-moringa'] -%}{% endif %} {% if product_1914810957922 == null %}{%- assign product_1914810957922 = all_products['vanilla-ashwagandha'] -%}{% endif %} {% if product_4350514004066 == null %}{%- assign product_4350514004066 = all_products['mocha-latte'] -%}{% endif %} {% if product_3945703342178 == null %}{%- assign product_3945703342178 = all_products['vanilla-ashwagandha-wholesale'] -%}{% endif %}<script>
 	window.__pageflyProducts = window.__pageflyProducts || {};
@@ -404,3 +405,5 @@ $(window).load(function() {
       alert("window load occurred!");
 });
 */</script>
+{% endcapture %}
+{% include 'password-protect' %}
