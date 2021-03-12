@@ -1,89 +1,49 @@
 {% comment %}
-
   © 2018 Atlas Group, Inc. All rights reserved.
-
   No portion of this software code may be reproduced, distributed or modified
   without prior express written authorization of Atlas Group, Inc.
-
   Unauthorized reproduction or copying of this software code, via any medium,
   is strictly prohibited and may subject you to severe legal liability.
-
 {% endcomment %}
-
 <!doctype html>
-
 <html lang="{{ shop.locale }}">
-
   <head>
-
     <title>
-
       {{ page_title }}
-
     </title>
-
-
     <!-- Global site tag (gtag.js) - Google Ads: 778854796 --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-778854796&ckcachebust=586898796"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-778854796'); </script>
-
-	<!-- 	FB iOS 13 policy tag -->
+    <!-- 	FB iOS 13 policy tag -->
     <meta name="facebook-domain-verification" content="y881462j4zlvoqixiqc3z904o93xtn" />
-
     <meta charset="utf-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="description" content="{{ page_description | escape }}">
-
     <!-- Facebook Share -->
-
     <meta property="og:type" content="website">
-
     <meta property="og:title" content="{{ page_title }}">
-
     <meta property="og:description" content="{{ page_description }}">
-
     <meta property="og:image" content="https://cdn.shopify.com/s/files/1/0063/2333/9362/files/VAST-protein-drink_1.jpg?v=1609768120">
-
     <meta property="og:image:secure_url" content="https://cdn.shopify.com/s/files/1/0063/2333/9362/files/VAST-protein-drink_1.jpg?v=1609768120">
-
     <!-- Twitter Share -->
-
     <meta name="twitter:card" content="summary_large_image">
-
     <meta name="twitter:title" content="{{ page_title }}">
-
     <meta name="twitter:description" content="{{ page_description }}">
-
     <meta name="twitter:image" content="https://cdn.shopify.com/s/files/1/0063/2333/9362/files/VAST-protein-drink_1.jpg?v=1609768120">
-
     <meta name="viewport" content="width=device-width , initial-scale=1 , maximum-scale=1 , shrink-to-fit=no , user-scalable=no">
-
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ckcachebust=586898796">
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js?ckcachebust=586898796"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css?ckcachebust=586898796">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css?ckcachebust=586898796" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css?ckcachebust=586898796">
-
     <script async type="text/javascript" data-api-key="" id="stamped-script-widget" src="https://cdn-stamped-io.azureedge.net/files/widget.min.js?ckcachebust=586898796"></script>
-
     {% if settings.favicon != blank %}
-
       <link rel="shortcut icon" type="image/png" href="{{ settings.favicon | img_url : '32x32' }}">
-
     {% endif %}
-
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css?ckcachebust=586898796" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
     <link rel="canonical" href="{{ canonical_url }}">
-
     {% include 'style-tags' , layout : 'theme' %}
-
     {{- 'styles.css' | asset_url | stylesheet_tag -}}
-
       <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'g-addtocart.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
-  <!--[if lte IE 9]><script src="{{ 'g-addtocart.js' | asset_url }}"></script><![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'g-addtocart.js' | asset_url }}"></script><![endif]-->
 
     {{ content_for_header }}
 
@@ -194,7 +154,6 @@
     
 
     <meta name="google-site-verification" content="xxl6am69ItGROPQl6gJXqcI5x02-ZZr1WVbr6s8wMxA" />
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js?ckcachebust=586898796"></script>
 
     {% include 'minmaxify-head' %}
     
@@ -239,11 +198,11 @@
 {% render 'pagefly-header' %}
 
   <script>
-    $(function () {
-      $("[multiple]").selectable({
+    // $(function () {
+    //   $("[multiple]").selectable({
 
-      });
-    });
+    //   });
+    // });
   </script>
 {%- comment -%}Tapjoy snippet{%- endcomment -%}
 {% include 'tapjoy' %}
@@ -530,31 +489,25 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js?ckcachebust=586898796"></script>
 
-
-
     {% include 'script-tags' , layout : 'theme' %}
-
 
     {% include 'ajaxify-cart' %}
 
+    <!-- Drip -->
+    <script type="text/javascript">
+      var _dcq = _dcq || [];
+      var _dcs = _dcs || {};
+      _dcs.account = '2939181';
 
-
-
-<!-- Drip -->
-<script type="text/javascript">
-  var _dcq = _dcq || [];
-  var _dcs = _dcs || {};
-  _dcs.account = '2939181';
-
-  (function() {
-    var dc = document.createElement('script');
-    dc.type = 'text/javascript'; dc.async = true;
-    dc.src = '//tag.getdrip.com/2939181.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(dc, s);
-  })();
-</script>
-<!-- end Drip -->
+      (function() {
+        var dc = document.createElement('script');
+        dc.type = 'text/javascript'; dc.async = true;
+        dc.src = '//tag.getdrip.com/2939181.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(dc, s);
+      })();
+    </script>
+    <!-- end Drip -->
 
 <script text="text/javascript">
   var _learnq = _learnq || [];
